@@ -13,16 +13,21 @@ export default {
   },
 
   async show(request: Request, response: Response){
+    //ID vem pela URL (params)
     const { id } = request.params;
 
     const orphanagesRepository = getRepository(Orphanage);
 
-    const orphanages = await orphanagesRepository.findOneOrFail();
+    const orphanage = await orphanagesRepository.findOneOrFail(id);
 
-    return response.json(orphanages);
+    return response.json(orphanage);
   },
 
   async create(request: Request, response: Response) {
+    console.log(request.files);
+    
+
+    //Recebendo os dados
     const {
       name,
       latitude,
@@ -34,6 +39,11 @@ export default {
     } = request.body;
   
     const orphanagesRepository = getRepository(Orphanage);
+
+    const requestImages = request.files as Express.Multer.File[];
+    const images = requestImages.map(image => {
+      return {path: image.filename}
+    })
   
     const orphanage = orphanagesRepository.create({
       name,
@@ -42,7 +52,8 @@ export default {
       about,
       instructions,
       opening_hours,
-      open_on_weekends
+      open_on_weekends,
+      images
     });
   
     await orphanagesRepository.save(orphanage)
