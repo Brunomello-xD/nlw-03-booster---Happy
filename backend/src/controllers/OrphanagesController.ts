@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+    import {Request, Response} from 'express';
 import {getRepository} from 'typeorm';
 import orphanageView from '../views/orphanages_view';
 import * as Yup from 'yup';
@@ -30,7 +30,6 @@ export default {
   },
 
   async create(request: Request, response: Response) {
-    console.log(request.files);
     
     //Recebendo os dados
     const {
