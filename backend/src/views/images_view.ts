@@ -5,7 +5,7 @@ export default {
     return {
       //Define o que será retornado
       id: image.id,
-      url: `http://localhost:3333/uploads/${image.path}`,
+      url: `http://192.168.0.105:3333/uploads/${image.path}`,
     };
   },
   renderMany(images: Image[]) {
