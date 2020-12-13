@@ -42,8 +42,8 @@ export default function OrphanageDetails() {
 
   if(!orphanage) {
     return(
-      <View style={styles.container}>
-        <Text style={styles.description}>Carregando...</Text>
+      <View style={styles.viewLoading}>
+        <Text style={styles.loading}>Carregando...</Text>
       </View>
     )
   }
@@ -263,5 +263,21 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 16,
     marginLeft: 16,
+  },
+  
+  viewLoading:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  loading: {
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    fontFamily: 'Nunito_600SemiBold',
+    color: '#5c8599',
+    lineHeight: 24,
+    fontSize: 20,
   }
 })
